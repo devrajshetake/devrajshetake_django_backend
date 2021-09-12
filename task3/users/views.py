@@ -45,7 +45,10 @@ def register(request):
             if member.phone == int(phone):
               err_lst.append("This Phone Number is Already linked to an existing Username.")
               break
-        
+        if(len(phone) != 10):
+            err_lst.append("Phone number should be 10 digit.")
+        if(len(password1) < 8 ):
+            err_lst.append("Password should be atleast 8 digits, Must contain atleast 1 upper case letter, 1 lower case letter and a special character")
         
 
         
@@ -92,7 +95,7 @@ def search(request):
         email = request.POST['email']
         usersearched = User.objects.get(email__exact = email)
         member = Member.objects.get(user = usersearched)
-        context = {'usersearched':usersearched, 'member':member}
+        context = {'usersearched':usersearched, 'member':member, 'searched':True}
         print(usersearched.first_name)
         return render(request, 'users/search.html', context)
 

@@ -14,11 +14,16 @@
         <input type="submit" value="Search">
     </div>
     </form>
+
+    {% if searched %}
     <h4>Name: {{usersearched.first_name}} {{usersearched.last_name}}</h4>
     <h4>Username: {{usersearched.username}}</h4>
     <h4>Email: {{usersearched.email}}</h4>
     <h4>Phone: {{member.phone}} </h4>
     <h4>Gender: {{member.get_gender_display}} </h4>
+    {% endif %}
+<br><br>
+    <a href="{% url 'register' %}">Go Back</a>
 
 </body>
 </html>
