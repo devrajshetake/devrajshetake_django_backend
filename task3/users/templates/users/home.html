@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User | Home</title>
+</head>
+<body>
+    {% if isLoggedIn %}
+    <h2>Welcome, {{request.user.first_name}} {{request.user.last_name}}</h2>
+    <h4>You are logged in as, {{request.user.username}}</h4>
+    <h4>Your Email is , {{request.user.email}}</h4>
+
+    <form action="{% url 'logout' %}">
+        <input type="submit" value="Logout" />
+    </form><br>
+    Want to search for an Existing User? <a href="{% url 'search' %}">Click Here</a>
+
+    {% else %}
+    <h3>You are not logged In</h3><br>
+    Click here to <a href="{% url 'login' %}">Login</a><br>
+    New here? Click <a href="{% url 'register' %}">Here </a> to register <br>
+    Want to search for an Existing User? <a href="{% url 'search' %}">Click Here</a>
+
+    {% endif %}
+</body>
+</html>

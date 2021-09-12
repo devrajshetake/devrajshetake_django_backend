@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <div>
+        {% if success_message %}
+        <h3>{{success_message}}</h3>
+        {% endif %}
+        {% for error in err_lst %}
+        <h3>{{error}}</h3>
+        {% endfor %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div>Enter Username: <input type="text" name="username" required></div>
+        <div>Enter First Name: <input type="text" name="first_name" required></div>
+        <div>Enter Last Name: <input type="text" name="last_name" required></div>
+        <div>Enter Email ID: <input type="email" name="email" required></div>
+        <div>Enter Phone number: <input type="number" name="phone" required></div>
+        <div>Gender:</div>
+        <ul>
+            <div>Male <input type="radio" name="gender" required></div>
+            <div>Female <input type="radio" name="gender"></div>
+            <div>Other <input type="radio" name="gender"></div>
+        </ul>
+        <div>Enter Password: <input type="password" name="password1" required></div>
+        <div>Confirm Password: <input type="password" name="password2" required></div>
+
+
+        <input type="submit">
+    </form>
+    </div>
+    <div>
+        Already have an account ? <a href="{% url 'login' %}">Sign In</a><br>
+        Want to search for an existing User? <a href="{% url 'search' %}">Click Here</a><br>
+        Go to <a href="{% url 'home'%}">User Home</a>
+
+    </div>
+</body>
+</html>
